@@ -1,0 +1,85 @@
+---
+description: UI/UX changes only - no backend/Supabase modifications without approval
+alwaysApply: true
+---
+
+# UI/UX Only Development Rule
+
+## Core Principle
+
+**ONLY make UI/UX changes. NEVER modify backend functionality, Supabase configuration, database schemas, or API logic without explicit user approval.**
+
+## What You CAN Do (UI/UX Only)
+
+✅ **Allowed Changes:**
+- React component styling and layout
+- UI component modifications (buttons, forms, tables, cards, etc.)
+- CSS/Tailwind styling changes
+- Component structure and organization
+- User interface flow and interactions
+- Visual design improvements
+- Frontend state management (React state, context)
+- Client-side validation UI
+- Loading states, error messages, success notifications
+- Responsive design adjustments
+- Animation and transitions
+
+## What You CANNOT Do (Requires Approval)
+
+❌ **Forbidden Without Approval:**
+- Supabase queries, mutations, or database operations
+- Database schema changes (SQL files, migrations)
+- API endpoint modifications
+- Backend function changes
+- Authentication logic changes
+- RLS (Row Level Security) policy changes
+- Supabase configuration files
+- Environment variable changes related to backend
+- Data fetching logic that changes backend behavior
+- Any `.sql` file modifications
+- `supabase/` directory changes
+
+## Approval Process
+
+**Before making ANY backend/Supabase change:**
+
+1. **STOP** and clearly explain what backend change is needed
+2. **ASK** the user: "This requires a backend/Supabase change. Do you approve?"
+3. **WAIT** for explicit approval before proceeding
+4. **CANCEL** if the user says no or doesn't approve
+
+## File Patterns to Be Cautious With
+
+- `**/*.sql` - Database queries/schemas
+- `supabase/**` - Supabase configuration
+- `src/lib/supabase*.ts` - Supabase client code
+- `src/hooks/*supabase*.ts` - Supabase hooks
+- `src/api/**` - API endpoints
+- `.env` - Environment variables
+
+## Example Scenarios
+
+### ✅ Allowed (UI Only)
+```
+User: "Make the button bigger and change the color"
+→ Modify component styling, no approval needed
+```
+
+### ❌ Requires Approval
+```
+User: "Add a new field to the database"
+→ STOP: "This requires a database schema change. Do you approve?"
+```
+
+### ❌ Requires Approval
+```
+User: "Change how data is fetched"
+→ STOP: "This modifies backend data fetching logic. Do you approve?"
+```
+
+## When in Doubt
+
+**If unsure whether a change affects backend/Supabase:**
+- Ask the user for approval
+- Explain what backend change would be needed
+- Wait for explicit confirmation before proceeding

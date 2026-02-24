@@ -1,0 +1,4 @@
+project_id = "dqynrbjixuidwqiacggx"
+
+[functions.record-attendance]
+verify_jwt = false

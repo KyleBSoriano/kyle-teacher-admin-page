@@ -1,0 +1,177 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+ 
+    --primary: 220.9 39.3% 11%;
+    --primary-foreground: 210 20% 98%;
+ 
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+ 
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+ 
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
+ 
+    --radius: 0.5rem;
+    
+    --light-blue: 200 100% 94%;
+  }
+ 
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+ 
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+ 
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+ 
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+ 
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+ 
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+ 
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+ 
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  @keyframes slide-up {
+    from {
+      transform: translateY(0px);
+      opacity: 0.8;
+    }
+    to {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes bounce-up-fade {
+    0% {
+      transform: translateY(0px) scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-20px) scale(1.1);
+      opacity: 0.9;
+    }
+    100% {
+      transform: translateY(-40px) scale(0.8);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+    }
+  }
+
+  /* Confetti Animation */
+  @keyframes confetti-fall {
+    0% {
+      transform: translateY(-100vh) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(720deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes confetti-shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-2px);
+    }
+    75% {
+      transform: translateX(2px);
+    }
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 1s ease-out forwards;
+  }
+  
+  .animate-bounce-up-fade {
+    animation: bounce-up-fade 1.2s ease-out forwards;
+  }
+  
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-confetti {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .animate-confetti::before {
+    content: '🎉';
+    position: absolute;
+    top: -10px;
+    left: 20%;
+    animation: confetti-fall 2s ease-out forwards, confetti-shake 0.1s infinite;
+    z-index: 1;
+  }
+
+  .animate-confetti::after {
+    content: '✨';
+    position: absolute;
+    top: -10px;
+    right: 20%;
+    animation: confetti-fall 2.2s ease-out forwards, confetti-shake 0.15s infinite;
+    animation-delay: 0.2s;
+    z-index: 1;
+  }
+}
